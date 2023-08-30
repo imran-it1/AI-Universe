@@ -10,10 +10,10 @@ const getData = async (isSeeMore) => {
 };
 
 const displayCard = (cardsData, isSeeMore) => {
-  console.log(cardsData);
-  console.log(cardsData.length);
+  //   console.log(cardsData);
+  //   console.log(cardsData.length);
 
-  console.log(isSeeMore);
+  //   console.log(isSeeMore);
 
   if (!isSeeMore) {
     cardsData = cardsData.slice(0, 6);
@@ -28,6 +28,7 @@ const displayCard = (cardsData, isSeeMore) => {
   const cardsContainer = document.getElementById("cards-container");
 
   cardsData.forEach((cardData) => {
+    // console.log(cardData.id);
     // console.log(cardData);
     const cardDiv = document.createElement("div");
     cardDiv.classList.add("card", "bg-base-100", "border", "shadow-sm");
@@ -66,7 +67,9 @@ const displayCard = (cardsData, isSeeMore) => {
                 </div>
             </div>
             <div>
-                <div class=" bg-red-100/50 p-2 rounded-full hover:cursor-pointer">
+                <div onclick="getExactCard('${
+                  cardData.id
+                }')" class=" bg-red-100/50 p-2 rounded-full hover:cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1" stroke="currentColor" class="w-5 h-5 text-red-700">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -105,6 +108,25 @@ const handleSpinner = (isSpining) => {
   } else {
     handleSpinnerElement.classList.add("hidden");
   }
+};
+
+// Modal Related Work
+
+const getExactCard = async (id) => {
+  //   console.log(id);
+  const response = await fetch(
+    `https://openapi.programming-hero.com/api/ai/tool/${id}`
+  );
+  const data = await response.json();
+  const exactData = data.data;
+  //   console.log(exactData);
+  showSingleCardDetails(exactData);
+};
+
+const showSingleCardDetails = (cardData) => {
+  console.log(cardData.description);
+  // Open Modal from Daisy UI
+  open_modal.showModal();
 };
 
 getData();
