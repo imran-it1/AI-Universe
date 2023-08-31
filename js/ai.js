@@ -124,7 +124,7 @@ const getExactCard = async (id) => {
 };
 
 const showSingleCardDetails = (cardData) => {
-  console.log(cardData.description);
+  console.log(cardData);
   // Open Modal from Daisy UI
   open_modal.showModal();
 };
