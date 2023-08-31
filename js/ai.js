@@ -125,6 +125,85 @@ const getExactCard = async (id) => {
 
 const showSingleCardDetails = (cardData) => {
   console.log(cardData);
+
+  const modalViewElement = document.getElementById("modal-view");
+  console.log(modalViewElement);
+
+  modalViewElement.innerHTML = `
+  
+  <div class="flex flex-wrap md:flex-nowrap gap-5 items-stretch justify-between p-8">
+
+
+  <div id="left-par" class="lg:w-1/2 border border-red-200 p-6 space-y-6 bg-red-50/50 rounded-lg">
+      <div>
+          <p class="text-2xl text-black font-semibold"> ${cardData.description} </p>
+      </div>
+
+      <div class="flex gap-4 justify-between items-center">
+          <div class="bg-white flex-1 p-4 text-center rounded-lg text-base font-bold text-green-600">
+              <div> ${cardData.pricing[0].price} </div>
+              <div> ${cardData.pricing[0].plan} </div>
+          </div>
+          <div class="bg-white flex-1 p-4 text-center rounded-lg text-base font-bold text-orange-600">
+              <div> ${cardData.pricing[1].price} </div>
+              <div> ${cardData.pricing[1].plan} </div>
+          </div>
+          <div class="bg-white flex-1 p-4 text-center rounded-lg text-base font-bold text-red-600">
+              <div> ${cardData.pricing[2].price} </div>
+              <div> ${cardData.pricing[2].plan} </div>
+          </div>
+    
+      </div>
+
+      <div class="flex gap-1">
+          <div class="flex-1">
+              <div class= "mb-1">
+                  <h3 class="text-2xl font-semibold text-black">Features</h3>
+              </div>
+              <ul class="list-disc list-inside">
+                  <li class="text-gray-600"> ${cardData.features["1"]?.feature_name} </li>
+                  <li class="text-gray-600"> ${cardData.features["2"]?.feature_name} </li>
+                  <li class="text-gray-600"> ${cardData.features["3"]?.feature_name} </li>
+              </ul>
+          </div>
+
+          <div class= "">
+              <div class= "mb-1">
+                  <h3 class="text-2xl font-semibold text-black">Integration</h3>
+              </div>
+              <ul class="list-disc list-inside">
+                  <li class="text-gray-600"> ${cardData.integrations[0]} </li>
+                  <li class="text-gray-600"> ${cardData.integrations[1]} </li>
+                  <li class="text-gray-600"> ${cardData.integrations[2]} </li>
+              </ul>
+          </div>
+      </div>
+
+  </div>
+
+
+
+
+  <div id="right-par" class="lg:w-1/2 border rounded-lg p-6 space-y-6">
+      <div>
+          <img class="h-[300px] rounded-lg" src=" ${cardData.image_link[0]} " alt="">
+      </div>
+      <div>
+          <div class="mt-4">
+              <h2 class="text-2xl font-semibold text-black text-center">Hi, how are you doing
+                  today?</h2>
+          </div>
+          <div>
+              <p class="text-base text-gray-600 text-center">I'm doing well, thank you for asking.
+                  How can I
+                  assist you today?</p>
+          </div>
+      </div>
+  </div>
+</div>
+  
+  `;
+
   // Open Modal from Daisy UI
   open_modal.showModal();
 };
