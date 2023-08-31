@@ -131,7 +131,7 @@ const showSingleCardDetails = (cardData) => {
 
   modalViewElement.innerHTML = `
   
-  <div class="flex flex-wrap md:flex-nowrap gap-5 items-stretch justify-between p-8">
+  <div class="relative flex flex-wrap md:flex-nowrap gap-5 items-stretch justify-between p-8">
 
 
   <div id="left-par" class="lg:w-1/2 border border-red-200 p-6 space-y-6 bg-red-50/50 rounded-lg">
@@ -200,8 +200,21 @@ const showSingleCardDetails = (cardData) => {
           </div>
       </div>
   </div>
+
+
+  <div class="modal-action inline-block absolute -top-12 -right-6">
+    <button class="rounded-full bg-rose-500 p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white"
+      class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
 </div>
-  
+
+</div>
+
+
+
   `;
 
   // Open Modal from Daisy UI
